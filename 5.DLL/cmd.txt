@@ -1,0 +1,7 @@
+javac -h . testJni.java
+
+gcc -c -fPIC -I /usr/lib/jvm/java-1.8.0-openjdk-amd64/include -I/usr/lib/jvm/java-1.8.0-openjdk-amd64/include/linux testJni1.c -o testJni1.o
+
+gcc -shared -fPIC -o libnative.so testJni.o -lc
+
+java -Djava.library.path=. testJni
